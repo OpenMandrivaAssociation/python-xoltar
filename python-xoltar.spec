@@ -2,7 +2,7 @@
 %define name     python-%{oname}
 %define version 0.20010601
 %define oversion 01jun01
-%define release %mkrel 3
+%define release %mkrel 4
 %define dname    %{oname}-toolkit-%{oversion}
 %define modules  functional lazy threadpool
 
