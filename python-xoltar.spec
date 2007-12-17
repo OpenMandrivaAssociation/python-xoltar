@@ -13,7 +13,6 @@ Release:       %{release}
 Source0:       %dname.tar.bz2
 License:       LGPL
 Group:         Development/Python
-BuildRoot:     %{_tmppath}/%{name}-buildroot
 Url:           http://www.xoltar.org/languages/python.html
 BuildRequires: python
 BuildArch:     noarch
