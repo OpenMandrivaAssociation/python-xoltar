@@ -15,7 +15,7 @@ License:       LGPL
 Group:         Development/Python
 BuildRoot:     %{_tmppath}/%{name}-buildroot
 Url:           http://www.xoltar.org/languages/python.html
-BuildRequires: python
+BuildRequires: python-devel
 BuildArch:     noarch
 
 %description
@@ -43,5 +43,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc *_changes.txt
-%{_libdir}/python*/site-packages/*.py*
-
+%{py_platsitedir}/*.py
