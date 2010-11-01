@@ -2,7 +2,7 @@
 %define name     python-%{oname}
 %define version 0.20010601
 %define oversion 01jun01
-%define release %mkrel 8
+%define release %mkrel 9
 %define dname    %{oname}-toolkit-%{oversion}
 %define modules  functional lazy threadpool
 
@@ -15,7 +15,7 @@ License:       LGPL
 Group:         Development/Python
 BuildRoot:     %{_tmppath}/%{name}-buildroot
 Url:           http://www.xoltar.org/languages/python.html
-BuildRequires: python-devel
+BuildRequires: python
 BuildArch:     noarch
 
 %description
