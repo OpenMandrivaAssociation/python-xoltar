@@ -2,7 +2,7 @@
 %define name     python-%{oname}
 %define version 0.20010601
 %define oversion 01jun01
-%define release %mkrel 9
+%define release %mkrel 10
 %define dname    %{oname}-toolkit-%{oversion}
 %define modules  functional lazy threadpool
 
@@ -16,6 +16,7 @@ Group:         Development/Python
 BuildRoot:     %{_tmppath}/%{name}-buildroot
 Url:           http://www.xoltar.org/languages/python.html
 BuildRequires: python
+BuildRequires: dos2unix
 BuildArch:     noarch
 
 %description
@@ -27,20 +28,23 @@ concerned with enabling a functional programming style in Python.
 %setup -c %dname
 sed -i -e"s/__version__ ==/__version__ =/" threadpool.py
 
+#fix EOLs
+dos2unix *.txt
+
 %build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -m755 -d $RPM_BUILD_ROOT/%{_libdir}/python%{pyver}/site-packages/
+rm -rf %{buildroot}
+install -m755 -d %{buildroot}/%{python_sitelib}
 for module in %{modules}; do
   python -c "import $module"
-  install -m644 $module.py* $RPM_BUILD_ROOT/%{_libdir}/python%{pyver}/site-packages/
+  install -m644 $module.py* %{buildroot}/%{python_sitelib}
 done
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
 %doc *_changes.txt
-%{py_platsitedir}/*.py
+%{python_sitelib}/*.py
